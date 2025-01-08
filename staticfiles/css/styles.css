@@ -1,0 +1,57 @@
+body{
+    padding: 0 50px;
+}
+
+/* Styling for profile*/
+.pfp{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile_form{
+    position: fixed;
+    text-align: right;
+    right: 50px;
+}
+
+.user{
+    position: fixed;
+    top: 10px;
+    right: 50px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.username{
+    font-size: 1.5em;
+}
+
+/* Styling for character-calc.html */
+img{
+    width: 100px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    text-align: center;
+
+}
+
+.filter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+    padding: 20px 50px;
+}
+
+/* Styling for result.html */
+.levels{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.materials{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
