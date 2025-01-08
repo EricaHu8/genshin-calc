@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+<!-- shows profile picture form -->
+{% block form %}
+    <form class="profile_form" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <span>Upload a profile picture {{ form.profile_pic }}</span>
+        <br>
+        <input type="submit" name="Update Profile Picture">
+    </form>
+{% endblock %}
+
+<!-- shows calculator link-->
+{% block calc %}
+    <a href={% url 'charactercalc' %}>Character Calculator</a>
+    <br>
+{% endblock %}
+
+<!-- shows recent calculations -->
+{% block recent %}
+    {% for CharCalc in recents %}
+        <a href = "{% url 'char' CharCalc.character_id.name %}">{{CharCalc.character_id.name}}</a>
+        <br>
+        {% if forloop.last %}
+            <br>
+            <a href="{% url 'deletehistory' %}">Clear history</a>
+        {% endif %}
+    {% empty %}
+        <p>You have no recent calculations</p>
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character List</title>
+</head>
+<body>
+    {% include 'profile.html' %}
+    <h1>Character List</h1>
+
+    <!-- breadcrumbs -->
+    <a href = "index" >Back to home</a>
+
+    <h2>List of Characters</h2>
+
+    <form class = "filter" method="get">
+        <span>Name {{ char_filter.form.name }}</span>
+        <span>Element {{ char_filter.form.element }}</span>
+        <span>Rarity {{ char_filter.form.rarity }}</span>
+        <span>Weapon {{ char_filter.form.weapon_type }}</span>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class = "grid">
+        {% for Character in characters %}
+            <div>
+                <a href = "{% url 'char' Character.name %}" >
+                    <img src="{% static 'images/'%}{{ Character.name }}_Icon.webp">
+                    <br>
+                    <p>{{ Character.name }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

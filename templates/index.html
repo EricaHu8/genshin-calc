@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genshin Calculator</title>
+</head>
+<body>
+    <h1>Genshin Impact Material Calculator</h1>
+    {% include 'profile.html' %}
+
+    {% block form %}
+        <!-- form to upload a profile picture (only available on user.html) -->
+    {% endblock %}
+
+    <h2>Calculator</h2>
+    <p>Updated for Genshin Impact V5.2</p>
+
+    {% block calc %}
+        <p>
+            <a href="{% url 'loginpage' %}">Login</a> or
+            <a href = "{% url 'registerpage' %}">create an account</a> to use the character calculator
+        </p>
+    {% endblock %}
+
+    <h2>Recent Calculations</h2>
+    {% block recent %}
+        <p>
+            <a href="{% url 'loginpage' %}">Login</a> or
+            <a href = "{% url 'registerpage' %}">create an account</a> to see recent calculations
+        </p>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <a href = "{% url 'index' %}" >Back to home</a>
+    <br>
+    <br>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <p>Already have an account? <a href="{% url 'loginpage' %}">Login Here</a></p>
+        <input type="submit" name="Create User">
+    </form>
+
+</body>
+</html>

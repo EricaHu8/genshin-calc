@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ character.name }} Calculator</title>
+</head>
+<body>
+    {% include 'profile.html' %}
+    <h1>{{ character.name }} Calculator</h1>
+
+    <!-- breadcrumbs -->
+    <a href = "{% url 'index' %}" >Back to home</a>
+    <span>>></span>
+    <a href = "{% url 'charactercalc' %}" >Back to character list</a>
+
+    <!-- show form errors -->
+    {% if calc_form.errors %}
+            {% for field, errors in calc_form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'calcresult' character.name %}" method="post">
+        {% csrf_token %}
+        <!-- Level Section -->
+        {{ calc_form.level }}
+        <span>Level</span>
+        <br>
+        <span>Level From:</span>
+        {{ calc_form.level_from }}
+        <br>
+        <span>Level To:</span>
+        {{ calc_form.level_to }}
+        <br>
+
+        <!-- Normal Attack Section -->
+        <br>
+        {{ calc_form.na }}
+        <span>Normal Attack</span>
+        <br>
+        <span>Normal Attack From:</span>
+        {{ calc_form.na_from }}
+        <br>
+        <span>Normal Attack To:</span>
+        {{ calc_form.na_to }}
+        <br>
+
+
+        <!-- Skill Section -->
+        <br>
+        {{ calc_form.skill }}
+        <span>Skill</span>
+        <br>
+        <span>Skill From:</span>
+        {{ calc_form.skill_from }}
+        <br>
+        <span>Skill To:</span>
+        {{ calc_form.skill_to }}
+        <br>
+
+        <!-- Burst Section -->
+        <br>
+        {{ calc_form.burst }}
+        <span>Burst</span>
+        <br>
+        <span>Burst From:</span>
+        {{ calc_form.burst_from }}
+        <br>
+        <span>Burst To:</span>
+        {{ calc_form.burst_to }}
+        <br>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+
+</body>
+</html>

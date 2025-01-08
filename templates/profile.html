@@ -1,0 +1,23 @@
+<!-- this is an include for user profile in the top right corner -->
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<div class="user">
+    <!-- user display if they have an account (lets them upload a profile picture)-->
+    {% if request.user.is_authenticated %}
+        <!-- display profile picture if they have one -->
+        {% if request.user.profile.profile_pic %}
+            <img class="pfp" src="{{ request.user.profile.profile_pic.url }}" alt="User profile picture">
+            <br>
+        {% endif %}
+
+        <span class="username">{{ request.user }}</span>
+        <br><a href="{% url 'logoutpage' %}">Logout</a><br>
+
+    {% else %}
+        <span class="username">{{ request.user }}</span>
+        <br><a href="{% url 'loginpage' %}">Login</a><br>
+    {% endif %}
+</div>

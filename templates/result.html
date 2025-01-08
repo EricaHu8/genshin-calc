@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ character.name }} Results</title>
+</head>
+<body>
+    {% include 'profile.html' %}
+    <h1>{{ character.name }} Results</h1>
+
+    <!-- breadcrumbs -->
+    <a href = "{% url 'index' %}" >Back to home</a>
+    <span>>></span>
+    <a href = "{% url 'charactercalc' %}" >Back to character list</a>
+    <span>>></span>
+    <a href = "{% url 'char' character.name %}">Back to {{ character.name }} calculator</a>
+    <br>
+    <img src="{% static 'images/'%}{{ character.name }}_Icon.webp">
+
+    <!-- Displays character leveling goals if it was checked off-->
+    <div class="levels">
+        {% if char_calc.level %}
+                <h2>Character Ascension (Lvl {{ char_calc.level_from }} - Lvl {{ char_calc.level_to }})</h2>
+        {% endif %}
+        {% if char_calc.na %}
+                <h2>Normal Attack (Lvl {{ char_calc.na_from }} - Lvl {{ char_calc.na_to }})</h2>
+        {% endif %}
+        {% if char_calc.skill %}
+                <h2>Skill (Lvl {{ char_calc.skill_from }} - Lvl {{ char_calc.skill_to }})</h2>
+        {% endif %}
+        {% if char_calc.burst %}
+                <h2>Burst (Lvl {{ char_calc.burst_from }} - Lvl {{ char_calc.burst_to }})</h2>
+        {% endif %}
+    </div>
+
+    <!-- displaying materials -->
+    <h3>Materials needed:</h3>
+    <div class="materials">
+        <div>
+            {% if char_calc.level %}
+                <li>{{ exp_2 }} {{ exps.0.name }}</li>
+                <li>{{ exp_3 }} {{ exps.0.name }}</li>
+                <li>{{ exp_4 }} {{ exps.0.name }}</li>
+                <li>{{ num_boss }} {{ boss.name }}</li>
+                <li>{{ num_speciality }} {{ specialty.name }}</li>
+                <li>{{ gem_2 }} {{ gems.0.name }}</li>
+                <li>{{ gem_3 }} {{ gems.1.name }}</li>
+                <li>{{ gem_4 }} {{ gems.2.name }}</li>
+                <li>{{ gem_5 }} {{ gems.3.name }}</li>
+                <br>
+            {% endif %}
+        </div>
+        <div>
+            {% if char_calc.na or char_calc.skill or char_calc.burst %}
+                <li>{{ book_2 }} {{ talents.0.name }}</li>
+                <li>{{ book_3 }} {{ talents.1.name }}</li>
+                <li>{{ book_4 }} {{ talents.2.name }}</li>
+                <li>{{ talent_boss }} {{ weekly_boss.name }}</li>
+                <br>
+            {% endif %}
+        </div>
+        <div>
+            <li>{{ item_1 }} {{ regular_mobs.0.name }}</li>
+            <li>{{ item_2 }} {{ regular_mobs.1.name }}</li>
+            <li>{{ item_3 }} {{ regular_mobs.2.name }}</li>
+            <li>{{ mora }} {{ special_materials.0.name }}</li>
+        </div>
+    </div>
+</body>
+</html>

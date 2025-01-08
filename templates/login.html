@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <a href = "{% url 'index' %}" >Back to home</a>
+    <br>
+    <br>
+    <form method="POST" action="">
+            {% csrf_token %}
+            <span>Username</span>
+            <input type="text" name="username" placeholder="Username...">
+            <br>
+            <span class="input-group-text">Password</span>
+            <input type="password" name="password" placeholder="Password...">
+            <br>
+            <input class="btn login_btn" type="submit" value="Login">
+
+        </form>
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    <p>Don't have an account? <a href="{% url 'registerpage' %}" class="ml-2">Sign Up</a></p>
+
+</body>
+
+</html>
+
